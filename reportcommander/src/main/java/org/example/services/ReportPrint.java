@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.NonNull;
+import org.example.api.MyException;
 import org.example.model.BasicReport;
 import org.example.model.ShopReport;
 
@@ -50,7 +51,7 @@ public class ReportPrint {
         printToFile.write(shopReport.toStringToPrint() + ";\n");
       }
     } catch (IOException e) {
-      throw new RuntimeException(e);
+      throw new MyException("Some problems with writing in File!!!");
     }
   }
 }

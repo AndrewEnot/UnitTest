@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.NonNull;
+import org.example.api.MyException;
 import org.example.model.BasicReport;
 import org.example.model.ShopReport;
 
@@ -20,8 +21,9 @@ import org.example.model.ShopReport;
  */
 public class ReportReader {
 
-  /**This class is functional only for implementing method getReportReader
-   * */
+  /**
+   * This class is functional only for implementing method getReportReader
+   */
 
   //This method read variable quantity of outer files *.csv and combine them to BasicReport
   public static BasicReport getReportReader(@NonNull File... var) {
@@ -33,7 +35,7 @@ public class ReportReader {
         if (innerMap.containsKey(s)) {
           innerMap.get(s).addAll(reportMap.get(s));
         } else {
-          innerMap.put(s,reportMap.get(s));
+          innerMap.put(s, reportMap.get(s));
         }
       }
     }
@@ -48,8 +50,7 @@ public class ReportReader {
       try (FileReader reader = new FileReader(file)) {
 
         char[] charArr = new char[(int) file.length()];
-        reader.read(charArr);
-
+          reader.read(charArr);
         List<String> strings = new ArrayList<>(List.of(Arrays.toString(charArr).split("\r, \n")));
         strings.remove(0);
 
@@ -72,7 +73,7 @@ public class ReportReader {
                     Collectors.toList())));
 
       } catch (IOException e) {
-        throw new RuntimeException(e);
+        throw new MyException("Some problems with reading File!!!");
       }
     }
     return resultMap;
