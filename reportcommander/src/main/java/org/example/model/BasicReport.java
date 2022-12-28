@@ -2,7 +2,9 @@ package org.example.model;
 
 import java.util.List;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /*
  * @author Oksiuta Andrii
@@ -11,8 +13,10 @@ import lombok.Data;
  */
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BasicReport {
 
-  private final Map<String, List<ShopReport>> report;
+  private Map<String, List<ShopReport>> report;
 
 }

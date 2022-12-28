@@ -3,6 +3,7 @@ package org.example.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 /*
  * @author Oksiuta Andrii
@@ -19,7 +20,14 @@ public class ShopReport {
   private double price;
   private double quantity;
 
-  public static ShopReport getShopReport(String brand, String product, double price, double quantity) {
+  public static ShopReport getShopReport(String brand, String product,
+      double price, double quantity) {
+    if (brand == null) {
+      brand = " ";
+    }
+    if (product == null) {
+      product = " ";
+    }
     return new ShopReport(brand, product, price, quantity);
   }
 
