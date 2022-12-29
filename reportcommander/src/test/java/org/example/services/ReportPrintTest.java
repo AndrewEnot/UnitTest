@@ -26,14 +26,17 @@ class ReportPrintTest {
   @Test
   void testPrintReport() {
 
-    //Preparing basement for testing, from test file reading an Array? which we gonna
+    //Preparing basement for testing, from test file reading an Array, which we gonna
     // checked with result of method in test
     File resultTest = new File(
         "C:/Users/7not9/IdeaProjects/UnitTest/reportcommander/src/test/java/outputTest/"
             + "Сильпо_TEST.csv");
     char[] testingCharArr = new char[(int) resultTest.length()];
     try (FileReader testingReader = new FileReader(resultTest)) {
-      testingReader.read(testingCharArr);
+      int read = testingReader.read(testingCharArr);
+      if (read == -1) {
+        return;
+      }
     } catch (IOException e) {
       throw new MyException("Exception in test!!! " + this.getClass().getName());
     }

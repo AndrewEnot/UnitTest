@@ -26,15 +26,17 @@ public abstract class ReportPrint {
    * result of processing of BasicReport. At the ehd we will get file .csv
    */
 
-  public static void printReport(BasicReport basic, String brand,
-      String path) {
-    if (basic == null || brand == null || path == null) {
-      return;
-    }
+  public static void printReport(BasicReport basic, String brand, String path) {
 
-    File result = new File(path, brand + "_" + LocalDate.now() + ".csv");
+    fileWriter(printReportLogic(basic, brand), brand, path);
 
+  }
+
+  private static List<ShopReport> printReportLogic(BasicReport basic, String brand) {
     List<ShopReport> reportsToPrint = new ArrayList<>();
+    if (basic == null || brand == null) {
+      return reportsToPrint;
+    }
 
     List<ShopReport> reports = basic.getReport().get(brand);
     List<String> products = reports.stream().map(ShopReport::getProduct).distinct()
@@ -51,10 +53,19 @@ public abstract class ReportPrint {
       reportsToPrint.add(
           ShopReport.getShopReport(brand, products.get(finalI), avPrice, sumQuantity));
     }
+    return reportsToPrint;
+  }
+
+  private static void fileWriter(List<ShopReport> reports, String brand,
+      String path) {
+    if (reports == null || brand == null || path == null) {
+      return;
+    }
+    File result = new File(path, brand + "_" + LocalDate.now() + ".csv");
 
     try (FileWriter printToFile = new FileWriter(result)) {
       printToFile.write("НАИМЕНОВАНИЕ;ЦЕНА;ШТ;\n");
-      for (ShopReport shopReport : reportsToPrint) {
+      for (ShopReport shopReport : reports) {
         printToFile.write(shopReport.toStringToPrint() + ";\n");
       }
     } catch (IOException e) {
