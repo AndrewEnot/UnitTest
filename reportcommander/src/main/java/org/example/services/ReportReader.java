@@ -3,7 +3,6 @@ package org.example.services;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,11 +20,14 @@ import org.example.model.ShopReport;
  * 21.12.2022
  * 12:00
  */
-public abstract class ReportReader {
+public class ReportReader {
 
   /**
    * This class is functional only for implementing method getReportReader
    */
+  private ReportReader() {
+    throw new IllegalStateException("Utility class");
+  }
 
   //This method read variable quantity of outer files *.csv and combine them to BasicReport
   public static BasicReport getReportReader(@NonNull File... files) {

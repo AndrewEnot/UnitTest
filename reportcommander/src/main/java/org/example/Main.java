@@ -12,8 +12,8 @@ public class Main {
     String pathToReport = "C:/Users/7not9/IdeaProjects/UnitTest/reportcommander/src/main/output/";
 
     ReportPrint.printReport(ReportReader.getReportReader(new
-        File(fileOne), new
-        File(fileTwo)),
+            File(fileOne), new
+            File(fileTwo)),
         "Сильпо",
         pathToReport);
   }

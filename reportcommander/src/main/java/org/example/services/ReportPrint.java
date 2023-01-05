@@ -5,10 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.NonNull;
 import org.example.api.MyException;
 import org.example.model.BasicReport;
 import org.example.model.ShopReport;
@@ -19,12 +17,15 @@ import org.example.model.ShopReport;
  * 21.12.2022
  * 12:01
  */
-public abstract class ReportPrint {
+public class ReportPrint {
 
   /**
    * This class is functional only for implementing method printReport This method write to File
    * result of processing of BasicReport. At the ehd we will get file .csv
    */
+  private ReportPrint() {
+    throw new IllegalStateException("Utility class");
+  }
 
   public static void printReport(BasicReport basic, String brand, String path) {
 
