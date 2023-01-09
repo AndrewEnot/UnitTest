@@ -29,7 +29,7 @@ class ReportPrintTest {
     //Preparing basement for testing, from test file reading an Array, which we gonna
     // checked with result of method in test
     File resultTest = new File(
-        "C:/Users/7not9/IdeaProjects/UnitTest/reportcommander/src/test/java/outputTest/"
+        "./src/test/java/outputTest/"
             + "Сильпо_TEST.csv");
     char[] testingCharArr = new char[(int) resultTest.length()];
     try (FileReader testingReader = new FileReader(resultTest)) {
@@ -58,7 +58,7 @@ class ReportPrintTest {
         new ShopReport("Сильпо", "Сахар", 21.40, 107),
         new ShopReport("Сильпо", "Мука", 22.2, 99)));
 
-    String path = "C:/Users/7not9/IdeaProjects/UnitTest/reportcommander/src/test/java/outputTest";
+    String path = "./src/test/java/outputTest";
     String brand = "Сильпо";
 
     BasicReport basic = Mockito.mock(BasicReport.class);

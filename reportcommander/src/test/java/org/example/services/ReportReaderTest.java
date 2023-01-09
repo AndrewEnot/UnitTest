@@ -20,11 +20,11 @@ class ReportReaderTest {
   @Test
   void testGetReportReader() {
     File fileTestOne = new File(
-        "C:/Users/7not9/IdeaProjects/UnitTest/reportcommander/src/test/java/inputTest/order_1.csv");
+        "./src/test/java/inputTest/order_1.csv");
     File fileTestTwo = new File(
-        "C:/Users/7not9/IdeaProjects/UnitTest/reportcommander/src/test/java/inputTest/order_2.csv");
+        "./src/test/java/inputTest/order_2.csv");
     File fileTestNotExist = new File(
-        "C:/Users/7not9/IdeaProjects/UnitTest/reportcommander/src/test/java/inputTest/order_3.csv");
+        "./src/test/java/inputTest/order_3.csv");
 
     Map<String, List<ShopReport>> testReport = new HashMap<>();
     testReport.put("АТБ", Lists.newArrayList(
